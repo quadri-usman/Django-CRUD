@@ -26,3 +26,21 @@ def create_view(request):
          
     context['form']= form
     return render(request, "create_view.html", context)
+
+# PostUpdateView
+from django.urls import reverse_lazy
+from django.views.generic.edit import UpdateView
+from blog.models import Post
+
+class PostUpdateView(UpdateView):
+    model = Post
+    success_url = reverse_lazy('post-list')
+
+# PostDeleteView
+from django.urls import reverse_lazy
+from django.views.generic.edit import DeleteView
+from blog.models import Post
+
+class PostDeleteView(DeleteView):
+    model = Post
+    success_url = reverse_lazy('post-list')
